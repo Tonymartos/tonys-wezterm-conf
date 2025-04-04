@@ -1,7 +1,6 @@
 local wezterm = require 'wezterm'
 
 return {
-  default_prog = { "tmux" },
   -- Tema
   color_scheme = "Catppuccin Mocha", -- Puedes cambiarlo por el que quieras
   font = wezterm.font_with_fallback {
@@ -35,6 +34,7 @@ return {
 
   -- Integración con tmux y Neovim (TrueColor)
   term = "wezterm", -- Importante para que Neovim lo detecte bien
+  default_prog = { "tmux" },
 
   -- Scrollback largo (útil para logs o cosas largas en tmux)
   scrollback_lines = 5000,
