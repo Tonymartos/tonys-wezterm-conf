@@ -1,41 +1,46 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
+local config = wezterm.config_builder()
 
-return {
-  -- Tema
-  color_scheme = "Catppuccin Mocha", -- Puedes cambiarlo por el que quieras
-  font = wezterm.font_with_fallback {
-    "JetBrainsMono Nerd Font",
-    "FiraCode Nerd Font",
+config.alternate_buffer_wheel_scroll_speed = 0
+
+-- Enable scroll bar 
+config.enable_scroll_bar = true
+
+-- Scrolls mouse 
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = "NONE",
+    action = act.ScrollByCurrentEventWheelDelta,
   },
-  font_size = 12.5,
-  line_height = 1.1,
-  cell_width = 1.0,
-
-  -- Transparencia
-  window_background_opacity = 0.95,
-
-  -- Apariencia de pestañas
-  enable_tab_bar = true,
-  hide_tab_bar_if_only_one_tab = true,
-
-  -- Tamaño inicial de la ventana
-  initial_rows = 40,
-  initial_cols = 120,
-
-  -- Atajos personalizados (opcional)
-  keys = {
-    -- Abrir nueva pestaña con Ctrl + t
-    {
-      key = "t",
-      mods = "CTRL",
-      action = wezterm.action.SpawnTab "CurrentPaneDomain",
-    },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = "NONE",
+    action = act.ScrollByCurrentEventWheelDelta,
   },
-
-  -- Integración con tmux y Neovim (TrueColor)
-  term = "wezterm", -- Importante para que Neovim lo detecte bien
-  default_prog = { "tmux" },
-
-  -- Scrollback largo (útil para logs o cosas largas en tmux)
-  scrollback_lines = 5000,
 }
+
+config.color_scheme = "Catppuccin Mocha"
+config.font = wezterm.font_with_fallback {
+  "JetBrainsMono Nerd Font",
+  "FiraCode Nerd Font",
+}
+config.font_size = 12.5
+config.line_height = 1.1
+config.cell_width = 1.0
+config.window_background_opacity = 0.95
+config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+config.initial_rows = 40
+config.initial_cols = 120
+
+config.keys = {
+  { key = "t", mods = "CTRL", action = act.SpawnTab "CurrentPaneDomain" },
+}
+
+config.term = "wezterm"
+config.default_prog = { "tmux" }
+config.scrollback_lines = 5000
+
+return config
