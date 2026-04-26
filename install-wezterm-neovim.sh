@@ -109,9 +109,10 @@ install_wezterm_config() {
 }
 
 install_on_arch() {
-  log "Installing WezTerm and Nerd Fonts with pacman..."
+  log "Installing WezTerm, tmux, and Nerd Fonts with pacman..."
   "${SUDO[@]}" pacman -Syu --needed --noconfirm \
     wezterm \
+    tmux \
     ttf-jetbrains-mono-nerd \
     ttf-firacode-nerd \
     ttf-nerd-fonts-symbols-mono
@@ -129,9 +130,9 @@ install_on_debian_like() {
 
   install_apt_repo_for_wezterm
 
-  log "Installing WezTerm..."
+  log "Installing WezTerm and tmux..."
   "${SUDO[@]}" apt-get update
-  "${SUDO[@]}" apt-get install -y wezterm
+  "${SUDO[@]}" apt-get install -y wezterm tmux
 
   log "Installing the Nerd Fonts required by ~/.wezterm.lua..."
   install_nerd_font_release "JetBrainsMono.zip" "JetBrainsMonoNerd"
@@ -152,7 +153,7 @@ main() {
   install_wezterm_config
 
   log "Installation completed. Restart WezTerm if it was already open."
-  log "Available command: wezterm"
+  log "Available commands: wezterm, tmux"
 }
 
 main "$@"

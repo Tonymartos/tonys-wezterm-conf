@@ -2,7 +2,7 @@
 
 This repository provides:
 
-- `install-wezterm-neovim.sh`: installs WezTerm and the fonts required by the bundled WezTerm configuration.
+- `install-wezterm-neovim.sh`: installs WezTerm, tmux, and the fonts required by the bundled WezTerm configuration.
 - `.wezterm.lua`: downloaded from the repository raw URL and installed as the active WezTerm configuration.
 
 ## Supported distributions
@@ -17,6 +17,7 @@ This repository provides:
 The script installs these packages with pacman:
 
 - wezterm
+- tmux
 - ttf-jetbrains-mono-nerd
 - ttf-firacode-nerd
 - ttf-nerd-fonts-symbols-mono
@@ -34,6 +35,7 @@ The script installs these base packages first:
 Then it configures the official WezTerm APT repository and installs:
 
 - wezterm
+- tmux
 
 It also downloads and installs these Nerd Fonts from the official Nerd Fonts release assets:
 
