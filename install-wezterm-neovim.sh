@@ -18,8 +18,10 @@ else
   fail "Could not read /etc/os-release to detect the distribution."
 fi
 
-DISTRO_ID="${ID,,}"
-DISTRO_LIKE="${ID_LIKE,,}"
+DISTRO_ID="${ID:-}"
+DISTRO_ID="${DISTRO_ID,,}"
+DISTRO_LIKE="${ID_LIKE:-}"
+DISTRO_LIKE="${DISTRO_LIKE,,}"
 WEZTERM_CONFIG_URL="${WEZTERM_CONFIG_URL:-https://raw.githubusercontent.com/Tonymartos/tonys-wezterm-conf/main/.wezterm.lua}"
 
 if [[ ${EUID:-$(id -u)} -eq 0 ]]; then
