@@ -5,6 +5,15 @@ This repository provides:
 - `install-wezterm-neovim.sh`: installs WezTerm, tmux, and the fonts required by the bundled WezTerm configuration.
 - `.wezterm.lua`: downloaded from the repository raw URL and installed as the active WezTerm configuration.
 
+## Included WezTerm plugins
+
+The config also enables these plugins:
+
+- `adriankarlen/bar.wezterm`: a richer top tab bar with workspace, pane, cwd, SSH, and clock modules.
+- `MLFlexer/resurrect.wezterm`: manual save and restore for WezTerm workspace, window, and tab state.
+
+WezTerm downloads these plugins automatically the first time it loads the config, so the first launch requires an internet connection.
+
 ## Supported distributions
 
 - Arch Linux and Arch-based distributions.
@@ -90,7 +99,18 @@ chmod +x ./install-wezterm-neovim.sh
 
 The script uses sudo automatically when needed.
 
+## Useful keybindings
+
+The bundled `.wezterm.lua` includes these extra shortcuts:
+
+- `Ctrl+t`: open a new WezTerm tab.
+- `Alt+s`: save the current WezTerm workspace state.
+- `Alt+r`: restore a saved workspace, window, or tab state.
+- `Alt+u`: update all installed WezTerm plugins.
+
 ## Notes
 
 - You can override the config URL by exporting `WEZTERM_CONFIG_URL` before running the script.
+- `resurrect.wezterm` is configured for manual save and restore only; it does not auto-save sessions by default.
+- Saved `resurrect.wezterm` state is plaintext unless you later configure encryption in `.wezterm.lua`.
 - Restart WezTerm after the installation finishes so the installed fonts and copied config are picked up.
